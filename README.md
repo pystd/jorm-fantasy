@@ -2,11 +2,11 @@
 An attempt at java orm
 
 
-### 1.软件架构
+### 1.[软件架构](docs/软件架构.jpg)
 ![软件架构](docs/软件架构.jpg)
 
-### 2.[功能演示](src/test)
-##### 2.1 [定义模型类](src/test/TestPerson.java)
+### 2.[功能演示](src/test/)
+##### 2.1 [定义模型类](src/models/Person.java)
 ```
 package models;
  
@@ -41,19 +41,19 @@ CREATE TABLE `person`  (
   `age` int(11) NOT NULL
 );
 ```
-##### 2.2 查询所有数据
+##### 2.3 查询所有数据
 ```
 Person.objects.all();
 ```
-##### 2.3 添加一条数据
+##### 2.4 添加一条数据
 ```
 Person.objects.create(Map.of("id", "1", "name", "张三", "age", 18));
 ```
-##### 2.4 修改一条数据
+##### 2.5 修改一条数据
 ```
 Person.objects.update("1", Map.of("age", 19));
 ```
-##### 2.5 删除一条数据
+##### 2.6 删除一条数据
 ```
 Person.objects.delete("1");
 ```
