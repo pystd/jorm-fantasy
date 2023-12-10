@@ -40,7 +40,7 @@ public abstract class Model{
 	
 	private static final String ATTR_OBJECTS = "objects";  	//模型管理器
 	private static final String ATTR_TABLE = "table";		//表名
-	private static boolean initialized;   					//是否已初始化
+	private static boolean initialized = false;   			//是否已初始化
 	
 	static {
 		//如果未初始化，则执行初始化
@@ -57,7 +57,7 @@ public abstract class Model{
 		logger.info("系统初始化...\n");
 		
 		//查找所有模型类
-		Set<Class<Model>> classes = new ModelFinder().findAllModels();
+		Set<Class<Model>> classes = ModelFinder.findAll();
 		
 		//设置模型类的属性值
 		for(Class<Model> cls: classes) {
@@ -204,7 +204,7 @@ class ModelFinder {
 	private static final String PKG_NAME = "models";  //模型类所在的包
 	
 	//查找所有模型类
-	public Set<Class<Model>> findAllModels() {
+	public static Set<Class<Model>> findAll() {
 		//检查设置的包名
 		if(PKG_NAME.endsWith(".")) {
 			logger.error("包名不合法，请检查：" + PKG_NAME);

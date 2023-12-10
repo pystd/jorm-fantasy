@@ -152,12 +152,12 @@ public class Manager{
 						return null;
 					}
 				}
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			} catch (InvocationTargetException e) {
+				logger.error(e.getCause().getMessage() + "\n");  //获取setter方法中产生的异常信息
+				return null;
+			} catch (IllegalAccessException | IllegalArgumentException e) {
 				logger.error("调用属性 " + name + " 的有参setter方法失败\n");
 				e.printStackTrace();
-				return null;
-			} catch (FormException e) {  //表单验证失败
-				logger.error(e + "\n");
 				return null;
 			} catch (Exception e) {
 				logger.error("属性设置失败\n");
